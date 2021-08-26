@@ -5,6 +5,7 @@ public class EmployeeWage {
 	public static final int IS_FULL_TIME=1;
 	public static final int  IS_PART_TIME= 2;
 	public static final int NUM_OF_WORKING_DAYS =2;
+	public static final int MAX_HRS_IN_MONTH =10;
 	int empcheck;
 	
 	public void attendence()
@@ -21,11 +22,11 @@ public class EmployeeWage {
      public void empdaily() 
      {
    
-	  int IS_RATE_PER_HOUR =20;
+  int IS_RATE_PER_HOUR =20;
      int emphr= 0;
-     int empwage = 0,totalempwage =0;
-  //   switch (empcheck) {
-     for(int day =0; day < NUM_OF_WORKING_DAYS; day++) {
+     int empwage = 0,totalempwage =0,totalworkingdays =0, totalemphrs=0;
+  while (totalemphrs <= MAX_HRS_IN_MONTH && totalworkingdays < NUM_OF_WORKING_DAYS) {
+	  totalworkingdays++;
      switch (empcheck) {
      case IS_PART_TIME:
 		emphr = 4;
@@ -36,6 +37,7 @@ public class EmployeeWage {
 	 default:
 		emphr=0;
 	}
+     totalemphrs += emphr;
 	empwage = emphr * IS_RATE_PER_HOUR;
     totalempwage += empwage;
 	System.out.println("Emp wage :"+empwage);
